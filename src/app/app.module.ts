@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule }  from '@angular/common/http'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -23,7 +24,7 @@ import { ProductService } from './product.service';
 import { OrdersComponent } from './back-end/orders/orders.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, AppRoutingModule, NgbModule ],
+  imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, NgbModule ],
   declarations: [ AppComponent, HelloComponent, AdminComponent, HomeComponent, DashboardComponent, ShopComponent, IndexComponent, AboutComponent, ServiceComponent, ContactComponent, NotFoundComponent, ProductDetailComponent, ProductsComponent, PricingTableComponent, PeopleCardsComponent,  OrdersComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ProductService]
