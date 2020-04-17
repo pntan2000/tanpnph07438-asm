@@ -11,6 +11,9 @@ import { ServiceComponent } from './front-end/service/service.component';
 import { ContactComponent } from './front-end/contact/contact.component';
 import { ProductDetailComponent } from './front-end/product-detail/product-detail.component';
 import { ProductsComponent } from './back-end/products/products.component';
+import { ContentBlockComponent } from './back-end/content-block/content-block.component';
+import { PeopleCardsComponent } from './back-end/people-cards/people-cards.component';
+import { PricingTableComponent } from './back-end/pricing-table/pricing-table.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full'},
@@ -49,7 +52,10 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo:'dashboard', pathMatch:'full'},
       { path: 'dashboard', component: DashboardComponent},
-      { path: 'products', component: ProductsComponent}
+      { path: 'products', component: ProductsComponent},
+      { path: 'people-cards', component: PeopleCardsComponent},
+      { path: 'content-blocks', component: ContentBlockComponent},
+      { path: 'pricing-table', component: PricingTableComponent},
     ]
   },
   { path: '404', component: HomeComponent,

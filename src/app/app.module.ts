@@ -15,11 +15,14 @@ import { ServiceComponent } from './front-end/service/service.component';
 import { ContactComponent } from './front-end/contact/contact.component';
 import { NotFoundComponent } from './front-end/not-found/not-found.component';
 import { ProductDetailComponent } from './front-end/product-detail/product-detail.component';
-import { ProductsComponent } from './front-end/products/products.component';
+import { ProductsComponent } from './back-end/products/products.component';
+import { PricingTableComponent } from './back-end/pricing-table/pricing-table.component';
+import { PeopleCardsComponent } from './back-end/people-cards/people-cards.component';
+import { ContentBlockComponent } from './back-end/content-block/content-block.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule],
-  declarations: [ AppComponent, HelloComponent, AdminComponent, HomeComponent, DashboardComponent, ShopComponent, IndexComponent, AboutComponent, ServiceComponent, ContactComponent, NotFoundComponent, ProductDetailComponent, ProductsComponent ],
+  declarations: [ AppComponent, HelloComponent, AdminComponent, HomeComponent, DashboardComponent, ShopComponent, IndexComponent, AboutComponent, ServiceComponent, ContactComponent, NotFoundComponent, ProductDetailComponent, ProductsComponent, PricingTableComponent, PeopleCardsComponent, ContentBlockComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
