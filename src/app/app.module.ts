@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -18,11 +19,13 @@ import { ProductDetailComponent } from './front-end/product-detail/product-detai
 import { ProductsComponent } from './back-end/products/products.component';
 import { PricingTableComponent } from './back-end/pricing-table/pricing-table.component';
 import { PeopleCardsComponent } from './back-end/people-cards/people-cards.component';
-import { ContentBlockComponent } from './back-end/content-block/content-block.component';
+import { ProductService } from './product.service';
+import { OrdersComponent } from './back-end/orders/orders.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, AppRoutingModule],
-  declarations: [ AppComponent, HelloComponent, AdminComponent, HomeComponent, DashboardComponent, ShopComponent, IndexComponent, AboutComponent, ServiceComponent, ContactComponent, NotFoundComponent, ProductDetailComponent, ProductsComponent, PricingTableComponent, PeopleCardsComponent, ContentBlockComponent ],
-  bootstrap:    [ AppComponent ]
+  imports:      [ BrowserModule, FormsModule, AppRoutingModule, NgbModule ],
+  declarations: [ AppComponent, HelloComponent, AdminComponent, HomeComponent, DashboardComponent, ShopComponent, IndexComponent, AboutComponent, ServiceComponent, ContactComponent, NotFoundComponent, ProductDetailComponent, ProductsComponent, PricingTableComponent, PeopleCardsComponent,  OrdersComponent ],
+  bootstrap:    [ AppComponent ],
+  providers: [ProductService]
 })
 export class AppModule { }

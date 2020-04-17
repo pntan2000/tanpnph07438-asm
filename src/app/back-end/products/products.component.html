@@ -1,3 +1,42 @@
-<p>
-products works!
-</p>
+<div class="main-content">
+
+	<!-- content -->
+	<div class="container-fluid content-top-gap">
+		<div class="prod">
+	<h2 class="d-flex mb-3 pt-5 justify-content-between">
+		Manager Product
+	</h2>
+	<br/>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th></th>
+				<th>Product Name</th>
+        <th>Amount</th>
+				<th>Price</th>
+				<th>Action</th>
+			</tr>
+			<tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+				<!-- content here -->
+				<td>{{i+1}}</td>
+				<td><img width="100" class="card-img-top" src="{{item.img}}" alt=""></td>
+				<td>{{item.name}}</td>
+        <td>{{item.amount}}</td>
+				<td>{{item.price}} đ</td>
+				<td width="200">
+					<button class="btn btn-primary" data-toggle="modal" (click)="showdetail(product)" ><i class="far fa-edit"></i></button>
+					<button class="btn btn-primary" (click)="removeItem(product.id)"><i class="far fa-trash-alt"></i></button>
+					<button class="btn btn-primary" data-toggle="modal" (click)="showdetail(product)"><i class="fas fa-info-circle"></i></button>
+				</td>
+			</tr>
+		</thead>
+	</table>
+	<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="items.length"></ngb-pagination>
+	<br/>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+	</div>
+</div>
+	</div>
+</div>

@@ -11,9 +11,9 @@ import { ServiceComponent } from './front-end/service/service.component';
 import { ContactComponent } from './front-end/contact/contact.component';
 import { ProductDetailComponent } from './front-end/product-detail/product-detail.component';
 import { ProductsComponent } from './back-end/products/products.component';
-import { ContentBlockComponent } from './back-end/content-block/content-block.component';
 import { PeopleCardsComponent } from './back-end/people-cards/people-cards.component';
 import { PricingTableComponent } from './back-end/pricing-table/pricing-table.component';
+import { OrdersComponent } from './back-end/orders/orders.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full'},
@@ -54,7 +54,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent},
       { path: 'products', component: ProductsComponent},
       { path: 'people-cards', component: PeopleCardsComponent},
-      { path: 'content-blocks', component: ContentBlockComponent},
+      { path: 'orders', component: OrdersComponent},
       { path: 'pricing-tables', component: PricingTableComponent},
     ]
   },
