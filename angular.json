@@ -25,6 +25,13 @@
             "styles": [
               "src/styles.css",
               "src/assets/css/back-end.scss",
+              "src/assets/css/style.scss",
+              "src/assets/css/checkout.scss",
+              "src/assets/css/creditly.scss",
+              "src/assets/css/easy-responsive-tabs.scss",
+              "src/assets/css/flexslider.scss",
+              "src/assets/css/jquery-ui1.scss",
+              "src/assets/css/shop.scss",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
