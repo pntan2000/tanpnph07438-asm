@@ -542,7 +542,7 @@ License: https://linearicons.com/free/license
   --para-color: #5d6b71;
   --light-bg-color: #E7EDF6;
   --card-shadow: 0 1px 2px 1px rgba(154, 154, 204, .22); }
-
+.admin-layout{
 html {
   scroll-behavior: smooth; }
 
@@ -579,7 +579,7 @@ p.small a {
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background: url(../images/Preloader_11.gif) center no-repeat #fff; }
+  background: url(https://imagehost.imageupload.net/2020/04/17/Preloader_11.gif) center no-repeat #fff; }
 
 /*--// page-loading-icon --*/
 .card__title {
@@ -772,7 +772,7 @@ a:hover {
 
 .checkbox input + i:after {
   content: '';
-  background: url("../images/mark2.png") no-repeat center;
+  background: url("https://imagehost.imageupload.net/2020/04/17/mark2.png") no-repeat center;
   top: 0px;
   left: 0px;
   width: 17px;
@@ -1542,7 +1542,7 @@ ul.nofitications-dropdown li {
 .search_box input[type="submit"] {
   border: none;
   cursor: pointer;
-  background: #424f63 url(../images/search.png) no-repeat center;
+  background: #424f63 url(https://imagehost.imageupload.net/2020/04/17/search.png) no-repeat center;
   position: absolute;
   right: 0;
   width: 35px;
@@ -1695,7 +1695,7 @@ ul.nofitications-dropdown li {
   cursor: pointer; }
 
 .sb-search-submit {
-  background: #fff url("../images/search.png") no-repeat 5px 7px;
+  background: #fff url("https://imagehost.imageupload.net/2020/04/17/search.png") no-repeat 5px 7px;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   /* IE 8 */
   filter: alpha(opacity=0);
@@ -1707,7 +1707,7 @@ ul.nofitications-dropdown li {
   -webkit-appearance: none; }
 
 .sb-icon-search {
-  background: #fff url("../images/search.png") no-repeat 5px 7px;
+  background: #fff url("https://imagehost.imageupload.net/2020/04/17/search.png") no-repeat 5px 7px;
   z-index: 90; }
 
 /* Open state */
@@ -1718,7 +1718,7 @@ ul.nofitications-dropdown li {
 
 .sb-search.sb-search-open .sb-icon-search,
 .no-js .sb-search .sb-icon-search {
-  background: #c0c0c0 url("../images/img-sprite.png") no-repeat 0px 1px;
+  background: #c0c0c0 url("https://imagehost.imageupload.net/2020/04/17/img-sprite.png") no-repeat 0px 1px;
   color: #fff;
   z-index: 11; }
 
@@ -2153,7 +2153,7 @@ li.dropdown span.badge {
   width: 20px;
   height: 20px;
   display: block;
-  background: url(../images/up-down.png) no-repeat -8px -24px;
+  background: url(https://imagehost.imageupload.net/2020/04/17/up-down.png) no-repeat -8px -24px;
   margin-top: 13px;
   float: right; }
 
@@ -2258,7 +2258,7 @@ li.dropdown span.badge {
   border-top-right-radius: 5px; }
 
 .img-bg {
-  background: url(../images/desk.jpg) no-repeat 0px 0px;
+  background: url(https://imagehost.imageupload.net/2020/04/17/desk.jpg) no-repeat 0px 0px;
   background-size: cover;
   min-height: 253px; }
 
@@ -3207,7 +3207,7 @@ h3.number {
   position: absolute;
   left: 20px;
   top: 20px;
-  background: url(../images/cross.png) no-repeat center;
+  background: url(https://imagehost.imageupload.net/2020/04/17/cross.png) no-repeat center;
   z-index: 100;
   cursor: pointer;
   z-index: 999; }
@@ -3265,7 +3265,7 @@ a.back i {
   background-color: rgba(71, 90, 171, 0.07); }
 
 select {
-  background: url(../images/down.png) no-repeat 96% 52%; }
+  background: url(https://imagehost.imageupload.net/2020/04/17/down.png) no-repeat 96% 52%; }
 
 .input-style:focus {
   border: 1px solid var(--primary);
@@ -3697,3 +3697,5 @@ img {
     line-height: 30px; } }
 
 /*# sourceMappingURL=style-starter.css.map */
+
+}
