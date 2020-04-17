@@ -5,6 +5,12 @@ import { AdminComponent } from './back-end/admin/admin.component';
 import { DashboardComponent } from './back-end/dashboard/dashboard.component';
 import { IndexComponent } from './front-end/index/index.component';
 import { ShopComponent } from './front-end/shop/shop.component';
+import { NotFoundComponent } from './front-end/not-found/not-found.component';
+import { AboutComponent } from './front-end/about/about.component';
+import { ServiceComponent } from './front-end/service/service.component';
+import { ContactComponent } from './front-end/contact/contact.component';
+import { ProductDetailComponent } from './front-end/product-detail/product-detail.component';
+import { ProductsComponent } from './back-end/products/products.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full'},
@@ -13,13 +19,44 @@ const routes: Routes = [
       { path: '', component: IndexComponent}
     ]
   },
-  { path: 'shop', component: ShopComponent},
+  { path: 'shop', component: HomeComponent,
+    children: [
+      { path: '', component: ShopComponent}
+    ]
+    },
+    
+  { path: 'about', component: HomeComponent,
+    children: [
+      { path: '', component: AboutComponent}
+    ]
+    },
+  { path: 'service', component: HomeComponent,
+    children: [
+      { path: '', component: ServiceComponent}
+    ]
+    },
+    { path: 'product-detail', component: HomeComponent,
+    children: [
+      { path: '', component: ProductDetailComponent}
+    ]
+    },
+  { path: 'contact', component: HomeComponent,
+    children: [
+      { path: '', component: ContactComponent}
+    ]
+    },
   { path: 'admin', component: AdminComponent,
     children: [
       { path: '', redirectTo:'dashboard', pathMatch:'full'},
-      { path: 'dashboard', component: DashboardComponent}
+      { path: 'dashboard', component: DashboardComponent},
+      { path: 'products', component: ProductsComponent}
     ]
-  }
+  },
+  { path: '404', component: HomeComponent,
+    children: [
+      { path: '', component: NotFoundComponent}
+    ]},
+  { path: '**', redirectTo:'/404', pathMatch:'full'},
 ];
 
 @NgModule({
