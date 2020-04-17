@@ -25,11 +25,6 @@
             "styles": [
               "src/styles.css",
               "src/assets/css/back-end.css",
-              "src/assets/css/bar.css",
-              "src/assets/css/pignose.calender.css",
-              "src/assets/css/simplyCountdown.css",
-              "src/assets/css/style.css",
-              "src/assets/css/widgets.css",
               "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": []
