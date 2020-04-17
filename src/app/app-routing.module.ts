@@ -55,7 +55,7 @@ const routes: Routes = [
       { path: 'products', component: ProductsComponent},
       { path: 'people-cards', component: PeopleCardsComponent},
       { path: 'content-blocks', component: ContentBlockComponent},
-      { path: 'pricing-table', component: PricingTableComponent},
+      { path: 'pricing-tables', component: PricingTableComponent},
     ]
   },
   { path: '404', component: HomeComponent,
