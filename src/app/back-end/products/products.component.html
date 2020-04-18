@@ -3,40 +3,125 @@
 	<!-- content -->
 	<div class="container-fluid content-top-gap">
 
-	<h2 class="d-flex mb-3 pt-5 justify-content-between">
-		Manager Product
-	</h2>
-	<br/>
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th></th>
-				<th>Product Name</th>
-        <th>Amount</th>
-				<th>Price</th>
-				<th>Action</th>
-			</tr>
-			<tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
-				<!-- content here -->
-				<td>{{i+1}}</td>
-				<td width="150"><img class="card-img-top" src="{{item.img}}" alt=""></td>
-				<td>{{item.name}}</td>
-        <td>{{item.amount}}</td>
-				<td>$ {{item.price}}</td>
-				<td width="200">
-					<button class="btn btn-primary" data-toggle="modal" (click)="showdetail(product)" ><i class="far fa-edit"></i></button>
-					<button class="btn btn-primary" (click)="removeItem(product.id)"><i class="far fa-trash-alt"></i></button>
-					<button class="btn btn-primary" data-toggle="modal" (click)="showdetail(product)"><i class="fas fa-info-circle"></i></button>
-				</td>
-			</tr>
-		</thead>
-	</table>
-	<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="items.length"></ngb-pagination>
-	<br/>
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
-	</div>
+		<h2 class="d-flex mb-3 pt-5 justify-content-between">
+			Manager Product
+			<button class="btn btn-primary" data-toggle="modal" data-target="#example"><i class="fas fa-plus-circle"></i> Add Product</button>
+		</h2>
+		<br/>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th></th>
+					<th>Product Name</th>
+					<th>Amount</th>
+					<th>Price</th>
+					<th>Action</th>
+				</tr>
+				<tr
+					*ngFor="let item of items; index as i">
+					<!-- content here -->
+					<td>{{i+1}}</td>
+					<td width="150"><img class="card-img-top" src="{{item.img}}" alt=""></td>
+					<td>{{item.name}}</td>
+					<td>{{item.amount}}</td>
+					<td>$ {{item.price}}</td>
+					<td width="200">
+						<button class="btn btn-primary" (click)="productDetail(item)" data-toggle="modal" data-target="#exampleMo"><i class="far fa-edit"></i></button>
+						<button class="btn btn-primary" (click)="removeItem(item.id)"><i class="far fa-trash-alt"></i></button>
+						<button class="btn btn-primary" routerLink="/product-detail/{{item.id}}"><i class="fas fa-info-circle"></i></button>
+					</td>
+
+				</tr>
+
+			</thead>
+
+			<!-- Modal 1-->
+			<div class="modal fade" id="exampleMo" tabindex="-1" role="dialog"	aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Edit: {{selected.name}}</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="form-group">
+									<label for="exampleInputEmail1">Name</label>
+									<input type="text" class="form-control" id="exampleInputEmail1" name="name" [(ngModel)]="products.name" value="{{selected.name}}" aria-describedby="emailHelp">
+										</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">Price</label>
+										<input type="text" class="form-control" id="exampleInputPassword1" name="price" [(ngModel)]="products.price" value="{{selected.price}}" >
+                      </div>
+										<div class="form-group">
+											<label for="exampleInputEmail1">Category</label>
+											<input type="text" class="form-control" id="exampleInputEmail1" name="category" [(ngModel)]="products.category" value="{{selected.category}}"  aria-describedby="emailHelp">
+										</div>
+											<div class="form-group">
+												<label for="exampleInputEmail1">Amount</label>
+												<input type="text" class="form-control" id="exampleInputEmail1" name="amount" [(ngModel)]="products.amount" value="{{selected.amount}}"  aria-describedby="emailHelp">
+										</div>
+												<div class="form-group">
+													<label for="exampleInputEmail1">Image URL</label>
+													<input type="text" class="form-control" id="exampleInputEmail1" name="img" [(ngModel)]="products.img" value="{{selected.img}}"  aria-describedby="emailHelp">
+										</div>
+													<button type="submit" data-dismiss="modal" (click)="updateItem()" class="btn btn-primary">Update</button>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</table>
+
+
+
+		<!-- Modal 2-->
+		<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Add new Product</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+					</div>
+					<div class="modal-body">
+						<form>
+                    <div class="form-group">
+								<label for="exampleInputEmail1">Name</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" name="name" [(ngModel)]="product.name" aria-describedby="emailHelp">
+										</div>
+								<div class="form-group">
+									<label for="exampleInputPassword1">Price</label>
+									<input type="text" class="form-control" id="exampleInputPassword1" name="price" [(ngModel)]="product.price" >
+                      </div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Category</label>
+										<input type="text" class="form-control" id="exampleInputEmail1" name="category" [(ngModel)]="product.category" aria-describedby="emailHelp">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1">Amount</label>
+											<input type="text" class="form-control" id="exampleInputEmail1" name="amount" [(ngModel)]="product.amount"aria-describedby="emailHelp">
+										</div>
+											<div class="form-group">
+												<label for="exampleInputEmail1">Image URL</label>
+												<input type="text" class="form-control" id="exampleInputEmail1" name="img" [(ngModel)]="product.img"aria-describedby="emailHelp">
+										</div>
+												<button type="submit" data-dismiss="modal" (click)="addItem()" class="btn btn-primary">Create</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
 </div>

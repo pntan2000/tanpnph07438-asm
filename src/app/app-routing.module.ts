@@ -24,7 +24,8 @@ const routes: Routes = [
   },
   { path: 'shop', component: HomeComponent,
     children: [
-      { path: '', component: ShopComponent}
+      { path: '', component: ShopComponent},
+      { path: ':category', component: ShopComponent}
     ]
     },
     
@@ -38,7 +39,7 @@ const routes: Routes = [
       { path: '', component: ServiceComponent}
     ]
     },
-    { path: 'product-detail', component: HomeComponent,
+    { path: 'product-detail/:id', component: HomeComponent,
     children: [
       { path: '', component: ProductDetailComponent}
     ]
@@ -52,7 +53,11 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo:'dashboard', pathMatch:'full'},
       { path: 'dashboard', component: DashboardComponent},
-      { path: 'products', component: ProductsComponent},
+      { path: 'products', component: ProductsComponent,
+          children: [
+            { path: '', component: ProductsComponent},
+            { path: ':category', component: ProductsComponent},
+          ]},
       { path: 'people-cards', component: PeopleCardsComponent},
       { path: 'orders', component: OrdersComponent},
       { path: 'pricing-tables', component: PricingTableComponent},

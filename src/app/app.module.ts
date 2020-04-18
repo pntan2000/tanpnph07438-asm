@@ -22,10 +22,11 @@ import { PricingTableComponent } from './back-end/pricing-table/pricing-table.co
 import { PeopleCardsComponent } from './back-end/people-cards/people-cards.component';
 import { ProductService } from './product.service';
 import { OrdersComponent } from './back-end/orders/orders.component';
+import { ShopListComponent } from './front-end/shop-list/shop-list.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, NgbModule ],
-  declarations: [ AppComponent, HelloComponent, AdminComponent, HomeComponent, DashboardComponent, ShopComponent, IndexComponent, AboutComponent, ServiceComponent, ContactComponent, NotFoundComponent, ProductDetailComponent, ProductsComponent, PricingTableComponent, PeopleCardsComponent,  OrdersComponent ],
+  declarations: [ AppComponent, HelloComponent, AdminComponent, HomeComponent, DashboardComponent, ShopComponent, IndexComponent, AboutComponent, ServiceComponent, ContactComponent, NotFoundComponent, ProductDetailComponent, ProductsComponent, PricingTableComponent, PeopleCardsComponent,  OrdersComponent, ShopListComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ProductService]
 })

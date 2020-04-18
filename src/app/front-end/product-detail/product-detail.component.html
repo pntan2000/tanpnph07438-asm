@@ -10,7 +10,7 @@
                   <a href="index.html">Home</a>
                   <span>/ /</span>
                </li>
-               <li>Single Page</li>
+               <li>Detail</li>
             </ul>
          </div>
       </div>
@@ -26,7 +26,7 @@
                         <div class="flexslider1">
                            <ul class="slides">
                               <li data-thumb="https://imagehost.imageupload.net/2020/04/17/f2.jpg">
-                                 <div class="thumb-image"> <img src="https://imagehost.imageupload.net/2020/04/17/f2.jpg" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                 <div class="thumb-image"> <img src="{{product.img}}" data-imagezoom="true" class="img-fluid" alt=" "> </div>
                               </li>
                            </ul>
                            <div class="clearfix"></div>
@@ -34,8 +34,8 @@
                      </div>
                   </div>
                   <div class="col-lg-8 single-right-left simpleCart_shelfItem">
-                     <h3>Soft Teddy Bear (Brown)</h3>
-                     <p><span class="item_price">$650</span>
+                     <h3>{{product.name}}</h3>
+                     <p><span class="item_price">${{product.price}}</span>
                         <del>$1,199</del>
                      </p>
                      <div class="rating1">
