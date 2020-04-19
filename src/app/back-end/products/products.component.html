@@ -24,7 +24,8 @@
 					<th>Price</th>
 					<th>Action</th>
 				</tr>
-				<tr *ngFor="let item of items; index as i">
+				<tr
+					*ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
 					<!-- content here -->
 					<td>{{i+1}}</td>
 					<td width="150"><img class="card-img-top" src="{{item.img}}" alt=""></td>
@@ -73,6 +74,8 @@
 												<div class="form-group">
 													<label for="exampleInputEmail1">Image URL</label>
 													<input type="text" class="form-control" id="exampleInputEmail1" name="img" [(ngModel)]="products.img" value="{{selected.img}}"  aria-describedby="emailHelp">
+                          <br>
+                        <img class="card-img-top" src="{{selected.img}}" alt="">
 										</div>
 													<button type="submit" data-dismiss="modal" (click)="updateItem()" class="btn btn-primary">Update</button>
 							</form>
@@ -84,7 +87,7 @@
 				</div>
 			</div>
 		</table>
-
+		<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="items.length"></ngb-pagination>
 
 
 		<!-- Modal 2-->
@@ -119,6 +122,8 @@
 											<div class="form-group">
 												<label for="exampleInputEmail1">Image URL</label>
 												<input type="text" class="form-control" id="exampleInputEmail1" name="img" [(ngModel)]="product.img"aria-describedby="emailHelp">
+                        <br>
+                        <img class="card-img-top" src="{{product.img}}" alt="">
 										</div>
 												<button type="submit" data-dismiss="modal" (click)="addItem()" class="btn btn-primary">Create</button>
 						</form>

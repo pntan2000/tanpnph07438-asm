@@ -9,6 +9,10 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+
+  page=1;
+  pageSize=10;
+
   items:Product[];
   selected: Product;
   product = new Product();
@@ -48,7 +52,10 @@ export class ProductsComponent implements OnInit {
   }
 
   getSearch(){
-    console.log(this.search);
-    this.items = this.items.filter(product => product.name = this.search);
+    if(this.search != null){
+    this.items = this.items.filter(product => product.name == this.search);
+    } else if(this.search == null) {
+      this.productService.getProducts().subscribe(response => this.items = response, error => console.log(error));
+    }
   }
 }
