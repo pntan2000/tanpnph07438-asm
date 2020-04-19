@@ -5,6 +5,12 @@
 
 		<h2 class="d-flex mb-3 pt-5 justify-content-between">
 			Manager Product
+			<div class="search-box">
+				<form>
+					<input class="form-control" placeholder="Search Product Here..." name="search" [(ngModel)]="search">
+					<button class="btn search-submit" (click)="getSearch()" value=""><span class="fa fa-search"></span></button>
+				</form>
+			</div>
 			<button class="btn btn-primary" data-toggle="modal" data-target="#example"><i class="fas fa-plus-circle"></i> Add Product</button>
 		</h2>
 		<br/>
@@ -18,8 +24,7 @@
 					<th>Price</th>
 					<th>Action</th>
 				</tr>
-				<tr
-					*ngFor="let item of items; index as i">
+				<tr *ngFor="let item of items; index as i">
 					<!-- content here -->
 					<td>{{i+1}}</td>
 					<td width="150"><img class="card-img-top" src="{{item.img}}" alt=""></td>
@@ -37,7 +42,8 @@
 			</thead>
 
 			<!-- Modal 1-->
-			<div class="modal fade" id="exampleMo" tabindex="-1" role="dialog"	aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" id="exampleMo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -82,7 +88,8 @@
 
 
 		<!-- Modal 2-->
-		<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -93,7 +100,7 @@
 					</div>
 					<div class="modal-body">
 						<form>
-                    <div class="form-group">
+							<div class="form-group">
 								<label for="exampleInputEmail1">Name</label>
 								<input type="text" class="form-control" id="exampleInputEmail1" name="name" [(ngModel)]="product.name" aria-describedby="emailHelp">
 										</div>

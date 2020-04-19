@@ -13,6 +13,7 @@ export class ProductsComponent implements OnInit {
   selected: Product;
   product = new Product();
   products = new Product();
+  search: string;
   constructor(
     private productService:ProductService,
     private route: ActivatedRoute
@@ -36,16 +37,18 @@ export class ProductsComponent implements OnInit {
     });
 }
   removeItem(id){
-    this.productService.deleteProduct(id).subscribe(response => this.items = response, error => console.log(error));
-    this.ngOnInit();
+    this.productService.deleteProduct(id).subscribe(response => this.items = this.items.filter(product => product.id != response.id), error => console.log(error));
   }
   addItem(){
-    this.productService.addProduct(this.product).subscribe(response => this.items = response, error => console.log(error));
-    this.ngOnInit();
+    this.productService.addProduct(this.product).subscribe(response => this.items.push(response), error => console.log(error));
   }
   updateItem(){
     this.products.id = this.selected.id;
     this.productService.updateProduct(this.products).subscribe(response => this.items = response, error => console.log(error));
-    this.ngOnInit();
+  }
+
+  getSearch(){
+    console.log(this.search);
+    this.items = this.items.filter(product => product.name = this.search);
   }
 }
