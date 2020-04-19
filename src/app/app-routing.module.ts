@@ -53,11 +53,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo:'dashboard', pathMatch:'full'},
       { path: 'dashboard', component: DashboardComponent},
-      { path: 'products', component: ProductsComponent,
-          children: [
-            { path: '', component: ProductsComponent},
-            { path: ':category', component: ProductsComponent},
-          ]},
+      { path: 'products/:category', component: ProductsComponent},
       { path: 'people-cards', component: PeopleCardsComponent},
       { path: 'orders', component: OrdersComponent},
       { path: 'pricing-tables', component: PricingTableComponent},

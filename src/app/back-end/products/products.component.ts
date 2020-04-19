@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
   pageSize=10;
 
   items:Product[];
-  selected: Product;
+  selected= new Product;
   product = new Product();
   products = new Product();
   search: string;
@@ -32,10 +32,10 @@ export class ProductsComponent implements OnInit {
 
   getProducts(){
     this.route.params.subscribe(param => {
-      console.log(param.category);
-      if(param.category != null){
+      console.log(param);
+      if(param.category != null && param.category != "all"){
         this.productService.getProducts().subscribe(response => this.items = response.filter(product => product.category == param.category), error => console.log(error));
-      } else{
+      } else if(param.category == "all"){
         this.productService.getProducts().subscribe(response => this.items = response, error => console.log(error));
       };
     });
@@ -48,13 +48,16 @@ export class ProductsComponent implements OnInit {
   }
   updateItem(){
     this.products.id = this.selected.id;
-    this.productService.updateProduct(this.products).subscribe(response => this.items = response, error => console.log(error));
+    this.items = this.items.filter(product => product.id != this.products.id);
+    this.productService.updateProduct(this.products).subscribe(response => this.items.push(response), error => console.log(error));
+    this.items = this.items.sort(function(a, b){return a.id - b.id});
+    console.log(this.items);
   }
 
   getSearch(){
-    if(this.search != null){
+    if(this.search != null && this.search != ""){
     this.items = this.items.filter(product => product.name == this.search);
-    } else if(this.search == null) {
+    } else if(this.search == null || this.search == "") {
       this.productService.getProducts().subscribe(response => this.items = response, error => console.log(error));
     }
   }
