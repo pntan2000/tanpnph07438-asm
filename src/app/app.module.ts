@@ -23,11 +23,12 @@ import { PeopleCardsComponent } from './back-end/people-cards/people-cards.compo
 import { ProductService } from './product.service';
 import { OrdersComponent } from './back-end/orders/orders.component';
 import { ShopListComponent } from './front-end/shop-list/shop-list.component';
+import { JwtService } from './jwt.service';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, NgbModule ],
   declarations: [ AppComponent, HelloComponent, AdminComponent, HomeComponent, DashboardComponent, ShopComponent, IndexComponent, AboutComponent, ServiceComponent, ContactComponent, NotFoundComponent, ProductDetailComponent, ProductsComponent, PricingTableComponent, PeopleCardsComponent,  OrdersComponent, ShopListComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [ProductService]
+  providers: [ProductService, JwtService]
 })
 export class AppModule { }
