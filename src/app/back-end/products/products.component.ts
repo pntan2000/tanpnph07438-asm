@@ -50,7 +50,6 @@ export class ProductsComponent implements OnInit {
     this.products.id = this.selected.id;
     this.items = this.items.filter(product => product.id != this.products.id);
     this.productService.updateProduct(this.products).subscribe(response => this.items.push(response), error => console.log(error));
-    this.items = this.items.sort(function(a, b){return a.id - b.id});
     console.log(this.items);
   }
 
