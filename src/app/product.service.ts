@@ -34,6 +34,10 @@ export class ProductService {
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.api}/Order`);
   }
+  
+  addOrder(product): Observable<Order> {
+    return this.http.post<Order>(`${this.api}/Order`, product);
+  }
 
   getCart(): Observable<Cart[]> {
     return this.http.get<Cart[]>(`${this.api}/Cart`);
@@ -42,6 +46,7 @@ export class ProductService {
     return this.http.post<Cart>(`${this.api}/Cart`, product);
   }
   updateCart(product): Observable<Cart> {
+    console.log(product);
     return this.http.put<Cart>(`${this.api}/Cart/${product.id}`, product);
   }
   deleteCart(id): Observable<Cart> {

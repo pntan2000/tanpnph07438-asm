@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from "../../product.service";
 import { Cart } from '../../Cart';
+import { Order } from '../../Order';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
 
   registerForm: FormGroup;
     submitted = false;
-    items:Cart[]
+    items:Cart[];
+    order:Order[];
 
     constructor(
       private formBuilder: FormBuilder,
@@ -41,10 +43,31 @@ export class HomeComponent implements OnInit {
     }
 
     getCart(){
-      this.productService.getCart().subscribe(response => this.items = response, error => console.log(error));
+      this.productService.getCart().subscribe(response => this.items = response.filter(product => product.user == "Tan"), error => console.log(error));
     }
     removeCart(id){
       this.productService.deleteCart(id).subscribe(response => this.items = this.items.filter(item => item.id != response.id), error => console.log(error));
+    }
+    changeCart(product, amo){
+      for(let i = 0; i < this.items.length; i++){
+        if(this.items[i].id == product.id){
+          product.amount = amo;
+          break;
+        }
+      }
+    }
+
+    updateCarts(){
+      for(let i = 0; i < this.items.length; i++){
+        this.productService.updateCart(this.items[i]);
+      }
+    }
+
+    BuyAll(){
+      for(let i = 0; i < this.items.length; i++){
+        this.order[i].name = this.items[i].name;
+        this.productService.updateCart(this.items[i]);
+      }
     }
 
 }
