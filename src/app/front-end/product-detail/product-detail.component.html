@@ -56,13 +56,8 @@
                      </div>
                      <div class="color-quality">
                         <div class="color-quality-right">
-                           <h5>Size :</h5>
-                           <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-                              <option value="null">2 Feet</option>
-                              <option value="null">3 Feet</option>
-                              <option value="null">4 Feet</option>
-                              <option value="null">5 Feet</option>
-                           </select>
+                           <h5>Amount:</h5>
+                           <input type="number" name="amount" [(ngModel)]="amount" min="1" value="1" class="frm-field required sect">
                         </div>
                      </div>
                      <div class="occasional">
@@ -85,7 +80,7 @@
                               <input type="hidden" name="add" value="1">
                               <input type="hidden" name="toys_item" value="Farenheit">
                               <input type="hidden" name="amount" value="575.00">
-                              <button type="submit" class="toys-cart ptoys-cart add">
+                              <button type="submit" (click)="addCart()" class="toys-cart ptoys-cart add">
                               Add to Cart
                               </button>
                            </form>

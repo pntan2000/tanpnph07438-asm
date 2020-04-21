@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
   products = new Product();
   search: string;
 
-  registerForm: FormGroup;
+  validateForm: FormGroup;
     submitted = false;
     message: string;
 
@@ -33,22 +33,21 @@ export class ProductsComponent implements OnInit {
   ngOnInit():void {
     this.getProducts();
 
-     this.registerForm = this.formBuilder.group({
-            name: ['', [Validators.required, Validators.nullValidator]],
-            price: ['', [Validators.required, Validators.nullValidator]],
-            category: ['', [Validators.required, Validators.nullValidator]],
-            amount: ['', [Validators.required, Validators.nullValidator]],
-            img: ['', [Validators.required, Validators.nullValidator]]
+     this.validateForm = this.formBuilder.group({
+            name: ['', Validators.required],
+            price: ['', Validators.required],
+            category: ['', Validators.required],
+            amount: ['', Validators.required],
+            img: ['', Validators.required]
         });
   }
-  get f() { return this.registerForm.controls; }
+  get f() { return this.validateForm.controls; }
 
     onSubmit() {
         this.submitted = true;
-        if (this.registerForm.invalid) {
+        if (this.validateForm.invalid) {
             return;
         }
-        alert(JSON.stringify(this.registerForm.value, null, 4));
         this.addItem();
     }
 

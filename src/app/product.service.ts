@@ -4,6 +4,7 @@ import { Order } from "./Order";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { User } from "./User";
+import { Cart } from "./Cart";
 
 @Injectable()
 export class ProductService {
@@ -32,6 +33,13 @@ export class ProductService {
   }
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.api}/Order`);
+  }
+
+  getCart(): Observable<Cart[]> {
+    return this.http.get<Cart[]>(`${this.api}/Cart`);
+  }
+  addCart(product): Observable<Cart> {
+    return this.http.post<Cart>(`${this.api}/Cart`, product);
   }
 
 }
