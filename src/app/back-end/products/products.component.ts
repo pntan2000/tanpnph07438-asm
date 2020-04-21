@@ -74,7 +74,14 @@ export class ProductsComponent implements OnInit {
     this.products.id = this.selected.id;
     this.items = this.items.filter(product => product.id != this.products.id);
     this.productService.updateProduct(this.products).subscribe(response => this.items.push(response), error => console.log(error));
-    console.log(this.items);
+    this.items = this.items.sort((n1,n2) => {
+
+        if (!(n2.id - n1.id)) {
+            return -1;
+        }
+            return 0;
+    });
+console.log(this.items);
   }
 
   getSearch(){

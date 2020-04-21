@@ -1,6 +1,8 @@
 export class Cart{
   id:number;
   user: string;
-  product: number;
-  amount:number
+  img: string;
+  name:string;
+  amount:number;
+  price:number
 }

@@ -33,6 +33,7 @@ export class ProductDetailComponent implements OnInit {
     this.cart.img = this.product.img;
     this.cart.name = this.product.name;
     this.cart.amount = this.amount;
+    this.cart.price = this.product.price;
     if(this.cart.user != null && this.cart.user != "null"){
       this.productService.addCart(this.cart).subscribe(response => console.log(response), error => console.log(error));
     }

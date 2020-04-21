@@ -41,5 +41,10 @@ export class ProductService {
   addCart(product): Observable<Cart> {
     return this.http.post<Cart>(`${this.api}/Cart`, product);
   }
-
+  updateCart(product): Observable<Cart> {
+    return this.http.put<Cart>(`${this.api}/Cart/${product.id}`, product);
+  }
+  deleteCart(id): Observable<Cart> {
+    return this.http.delete<Cart>(`${this.api}/Cart/${id}`);
+  }
 }
