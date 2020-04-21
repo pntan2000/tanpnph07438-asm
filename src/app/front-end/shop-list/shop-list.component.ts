@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from "../../Product";
 import { ProductService } from "../../product.service";
 import { ActivatedRoute } from "@angular/router";
+import { User } from '../../User';
 
 @Component({
   selector: 'app-shop-list',
@@ -11,6 +12,7 @@ import { ActivatedRoute } from "@angular/router";
 export class ShopListComponent implements OnInit {
 
   items:Product[];
+  user: User[];
 
   constructor(
     private productService:ProductService,

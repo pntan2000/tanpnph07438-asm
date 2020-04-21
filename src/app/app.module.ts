@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule }  from '@angular/common/http'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -26,7 +27,7 @@ import { ShopListComponent } from './front-end/shop-list/shop-list.component';
 import { JwtService } from './jwt.service';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, NgbModule ],
+  imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, NgbModule, ReactiveFormsModule ],
   declarations: [ AppComponent, HelloComponent, AdminComponent, HomeComponent, DashboardComponent, ShopComponent, IndexComponent, AboutComponent, ServiceComponent, ContactComponent, NotFoundComponent, ProductDetailComponent, ProductsComponent, PricingTableComponent, PeopleCardsComponent,  OrdersComponent, ShopListComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ProductService, JwtService]

@@ -71,10 +71,13 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li routerLinkActive="active"><a class="nav-link" routerLink="/shop/kid">Kids Toys</a></li>
+								<li routerLinkActive="active"><a class="nav-link" routerLink="/shop/kid">Kids Toys</a>
+								</li>
 								<li routerLinkActive="active"><a class="nav-link" routerLink="/shop/doll">Dolls</a></li>
-								<li routerLinkActive="active"><a class="nav-link" routerLink="/shop/key">Key Toys</a></li>
-								<li routerLinkActive="active"><a class="nav-link" routerLink="/shop/boy">Boys Toys</a></li>
+								<li routerLinkActive="active"><a class="nav-link" routerLink="/shop/key">Key Toys</a>
+								</li>
+								<li routerLinkActive="active"><a class="nav-link" routerLink="/shop/boy">Boys Toys</a>
+								</li>
 							</ul>
 						</li>
 						<li class="nav-item" routerLinkActive="active">
@@ -174,19 +177,22 @@
 					</div>
 					<div class="modal-body">
 						<div class="register-form">
-							<form action="#" method="post">
+							<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 								<div class="fields-grid">
 									<div class="styled-input">
-										<input type="text" placeholder="Your Name" name="Your Name" required="">
+										<input type="email" placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required">Email is required</div>
+                  </div>
                            </div>
 										<div class="styled-input">
-											<input type="email" placeholder="Your Email" name="Your Email" required="">
+											<input type="password" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
                            </div>
-											<div class="styled-input">
-												<input type="password" placeholder="password" name="password" required="">
-                           </div>
-												<button type="submit" class="btn subscrib-btnn">Login</button>
-											</div>
+											<button type="submit" class="btn subscrib-btnn">Login</button>
+										</div>
 							</form>
 						</div>
 					</div>

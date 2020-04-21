@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from "../../Product";
 import { ProductService } from "../../product.service";
 import { ActivatedRoute } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
@@ -18,21 +19,45 @@ export class ProductsComponent implements OnInit {
   product = new Product();
   products = new Product();
   search: string;
+
+  registerForm: FormGroup;
+    submitted = false;
+    message: string;
+
   constructor(
     private productService:ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit():void {
     this.getProducts();
+
+     this.registerForm = this.formBuilder.group({
+            name: ['', [Validators.required, Validators.nullValidator]],
+            price: ['', [Validators.required, Validators.nullValidator]],
+            category: ['', [Validators.required, Validators.nullValidator]],
+            amount: ['', [Validators.required, Validators.nullValidator]],
+            img: ['', [Validators.required, Validators.nullValidator]]
+        });
   }
+  get f() { return this.registerForm.controls; }
+
+    onSubmit() {
+        this.submitted = true;
+        if (this.registerForm.invalid) {
+            return;
+        }
+        alert(JSON.stringify(this.registerForm.value, null, 4));
+        this.addItem();
+    }
+
   productDetail(product){
    this.selected = product;
   }
 
   getProducts(){
     this.route.params.subscribe(param => {
-      console.log(param);
       if(param.category != null && param.category != "all"){
         this.productService.getProducts().subscribe(response => this.items = response.filter(product => product.category == param.category), error => console.log(error));
       } else if(param.category == "all"){

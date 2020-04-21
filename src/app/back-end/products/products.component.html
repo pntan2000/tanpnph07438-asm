@@ -43,8 +43,8 @@
 			</thead>
 
 			<!-- Modal 1-->
-			<div *ngIf="selected" class="modal fade" id="exampleMo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-				aria-hidden="true">
+			<div *ngIf="selected" class="modal fade" id="exampleMo" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -74,8 +74,8 @@
 												<div class="form-group">
 													<label for="exampleInputEmail1">Image URL</label>
 													<input type="text" class="form-control" id="exampleInputEmail1" name="img" [(ngModel)]="products.img" value="{{selected.img}}"  aria-describedby="emailHelp">
-                          <br>
-                        <img class="card-img-top" src="{{selected.img}}" alt="">
+													<br>
+													<img class="card-img-top" src="{{selected.img}}" alt="">
 										</div>
 													<button type="submit" data-dismiss="modal" (click)="updateItem()" class="btn btn-primary">Update</button>
 							</form>
@@ -102,34 +102,50 @@
                   </button>
 					</div>
 					<div class="modal-body">
-						<form>
+						<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 							<div class="form-group">
 								<label for="exampleInputEmail1">Name</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" name="name" [(ngModel)]="product.name" aria-describedby="emailHelp">
+								<input type="text" name="name" [(ngModel)]="product.name" formControlName="name" class="form-control"         [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+								<div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+									<div *ngIf="f.name.errors.required">Name is required</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Price</label>
+								<input type="text" name="price" [(ngModel)]="product.price" formControlName="price" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+								<div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+									<div *ngIf="f.price.errors.required">Price is required</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Category</label>
+								<input type="text" name="category" [(ngModel)]="product.category" formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }" />
+								<div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+									<div *ngIf="f.category.errors.required">Category is required</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Amount</label>
+								<input type="text" name="amount" [(ngModel)]="product.amount" formControlName="amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+								<div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+									<div *ngIf="f.amount.errors.required">Email is required</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Image URL</label>
+								<input type="text" name="img" [(ngModel)]="product.img" formControlName="img" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.img.errors }" />
+								<div *ngIf="submitted && f.img.errors" class="invalid-feedback">
+									<div *ngIf="f.img.errors.required">URL is required</div>
+								</div>
+								<br>
+								<img class="card-img-top" src="{{product.img}}" alt="">
 										</div>
-								<div class="form-group">
-									<label for="exampleInputPassword1">Price</label>
-									<input type="text" class="form-control" id="exampleInputPassword1" name="price" [(ngModel)]="product.price" >
-                      </div>
-									<div class="form-group">
-										<label for="exampleInputEmail1">Category</label>
-										<input type="text" class="form-control" id="exampleInputEmail1" name="category" [(ngModel)]="product.category" aria-describedby="emailHelp">
-										</div>
-										<div class="form-group">
-											<label for="exampleInputEmail1">Amount</label>
-											<input type="text" class="form-control" id="exampleInputEmail1" name="amount" [(ngModel)]="product.amount"aria-describedby="emailHelp">
-										</div>
-											<div class="form-group">
-												<label for="exampleInputEmail1">Image URL</label>
-												<input type="text" class="form-control" id="exampleInputEmail1" name="img" [(ngModel)]="product.img"aria-describedby="emailHelp">
-                        <br>
-                        <img class="card-img-top" src="{{product.img}}" alt="">
-										</div>
-												<button type="submit" data-dismiss="modal" (click)="addItem()" class="btn btn-primary">Create</button>
+								<button type="submit" class="btn btn-primary">Create</button>
+								<button class="btn btn-secondary" type="reset">Clear</button>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button class="btn btn-secondary" (click)="onReset()" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
