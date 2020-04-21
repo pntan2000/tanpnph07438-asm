@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   registerForm: FormGroup;
     submitted = false;
     items:Cart[];
-    order:Order[];
+    order = new Order;
 
     constructor(
       private formBuilder: FormBuilder,
@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
 
     getCart(){
       this.productService.getCart().subscribe(response => this.items = response.filter(product => product.user == "Tan"), error => console.log(error));
+      console.log(this.items);
     }
     removeCart(id){
       this.productService.deleteCart(id).subscribe(response => this.items = this.items.filter(item => item.id != response.id), error => console.log(error));
@@ -59,14 +60,21 @@ export class HomeComponent implements OnInit {
 
     updateCarts(){
       for(let i = 0; i < this.items.length; i++){
-        this.productService.updateCart(this.items[i]);
+        this.productService.updateCart(this.items[i]).subscribe();
       }
     }
 
     BuyAll(){
       for(let i = 0; i < this.items.length; i++){
-        this.order[i].name = this.items[i].name;
-        this.productService.updateCart(this.items[i]);
+        this.order.name = this.items[i].name;
+        this.order.img = this.items[i].img;
+        this.order.price = this.items[i].price*this.items[i].amount;
+        this.order.adress = this.items[i].user;
+        this.order.amount = this.items[i].amount;
+        this.order.status = "";
+        let id = this.items[i].id;
+        this.productService.addOrder(this.order).subscribe();
+        this.productService.deleteCart(id).subscribe(response => this.items = this.items.filter(item => item.id != response.id), error => console.log(error));
       }
     }
 

@@ -20,8 +20,24 @@ export class OrdersComponent implements OnInit {
     this.getOrders();
   }
 
-getOrders(){
-    this.productService.getOrders().subscribe(response => this.items = response, error => console.log(error));
-}
+  getOrders(){
+      this.productService.getOrders().subscribe(response => this.items = response.sort((n1,n2) => {
+      if (n1.status > n2.status) {
+          return 1;
+      }
+
+      if (n1.status < n2.status) {
+          return -1;
+      }
+
+      return 0;
+  }), error => console.log(error));
+  }
+
+  success(order){
+    this.items = this.items.filter(product => product.id != order.id);
+    order.status = "none";
+    this.productService.updateOrder(order).subscribe(response => this.items.push(response), error => console.log(error));
+  }
 
 }

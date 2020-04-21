@@ -27,16 +27,20 @@ export class ProductService {
   deleteProduct(id): Observable<Product> {
     return this.http.delete<Product>(`${this.api}/Product/${id}`);
   }
+
   getUser(): Observable<User[]> {
     this.users = this.http.get<User[]>(`${this.api}/User`);
     return this.http.get<User[]>(`${this.api}/User`);
   }
+
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.api}/Order`);
   }
-  
   addOrder(product): Observable<Order> {
     return this.http.post<Order>(`${this.api}/Order`, product);
+  }
+  updateOrder(order): Observable<Order> {
+    return this.http.put<Order>(`${this.api}/Order/${order.id}`, order);
   }
 
   getCart(): Observable<Cart[]> {
@@ -46,7 +50,6 @@ export class ProductService {
     return this.http.post<Cart>(`${this.api}/Cart`, product);
   }
   updateCart(product): Observable<Cart> {
-    console.log(product);
     return this.http.put<Cart>(`${this.api}/Cart/${product.id}`, product);
   }
   deleteCart(id): Observable<Cart> {

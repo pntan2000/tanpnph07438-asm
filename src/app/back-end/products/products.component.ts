@@ -49,6 +49,12 @@ export class ProductsComponent implements OnInit {
             return;
         }
         this.addItem();
+        this.message = "Add Success";
+    }
+    onReset() {
+        this.submitted = false;
+        this.validateForm.reset();
+        this.message = null;
     }
 
   productDetail(product){
@@ -75,12 +81,16 @@ export class ProductsComponent implements OnInit {
     this.items = this.items.filter(product => product.id != this.products.id);
     this.productService.updateProduct(this.products).subscribe(response => this.items.push(response), error => console.log(error));
     this.items = this.items.sort((n1,n2) => {
+    if (n1.id > n2.id) {
+        return 1;
+    }
 
-        if (!(n2.id - n1.id)) {
-            return -1;
-        }
-            return 0;
-    });
+    if (n1.id < n2.id) {
+        return -1;
+    }
+
+    return 0;
+});
       console.log(this.items);
   }
 

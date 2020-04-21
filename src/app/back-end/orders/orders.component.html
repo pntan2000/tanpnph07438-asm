@@ -27,7 +27,7 @@
       <td>{{item.adress}}</td>
       <td width="200">
 					<label class="btn btn-light" [ngStyle]="{'display':item.status ? '':'none'}" >Success</label>
-          <button class="btn btn-success" [ngStyle]="{'display':item.status ? 'none':''}">Waiting...</button>
+          <button class="btn btn-success" (click)="success(item)" [ngStyle]="{'display':item.status ? 'none':''}">Waiting...</button>
 				</td>
     </tr>
   </tbody>
