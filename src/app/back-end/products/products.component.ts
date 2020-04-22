@@ -79,18 +79,7 @@ export class ProductsComponent implements OnInit {
   updateItem(){
     this.products.id = this.selected.id;
     this.items = this.items.filter(product => product.id != this.products.id);
-    this.productService.updateProduct(this.products).subscribe(response => this.items.push(response), error => console.log(error));
-    this.items = this.items.sort((n1,n2) => {
-    if (n1.id > n2.id) {
-        return 1;
-    }
-
-    if (n1.id < n2.id) {
-        return -1;
-    }
-
-    return 0;
-});
+    this.productService.updateProduct(this.products).subscribe(response => (this.items.push(response),this.items.sort((n1,n2) => n1.id - n2.id)), error => console.log(error));
       console.log(this.items);
   }
 
