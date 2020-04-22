@@ -13,7 +13,7 @@ export class ProductDetailComponent implements OnInit {
 
   product: Product;
   cart = new Cart();
-  amount:number;
+  amount:number = 1;
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute
