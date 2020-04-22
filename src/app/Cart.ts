@@ -5,5 +5,5 @@ export class Cart{
   name:string;
   amount:number;
   price:number;
-  idsp:string
+  idsp:number;
 }
