@@ -4,5 +4,6 @@ export class Cart{
   img: string;
   name:string;
   amount:number;
-  price:number
+  price:number;
+  idsp:string
 }

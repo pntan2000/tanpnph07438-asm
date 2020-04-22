@@ -73,8 +73,13 @@ export class HomeComponent implements OnInit {
         this.order.amount = this.items[i].amount;
         this.order.status = "";
         let id = this.items[i].id;
+        let am = this.items[i].amount;
+        let idsp = this.items[i].idsp;
         this.productService.addOrder(this.order).subscribe();
         this.productService.deleteCart(id).subscribe(response => this.items = this.items.filter(item => item.id != response.id), error => console.log(error));
+        this.productService.getProductDetail(idsp).subscribe(response => (response.amount = response.amount-am,
+           this.productService.updateProduct(response).subscribe()), error => console.log(error));
+
       }
     }
 

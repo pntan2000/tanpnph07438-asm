@@ -11,7 +11,7 @@
 					<button class="btn search-submit" (click)="getSearch()" value=""><span class="fa fa-search"></span></button>
 				</form>
 			</div>
-			<button class="btn btn-primary" data-toggle="modal" data-target="#example"><i class="fas fa-plus-circle"></i> Add Product</button>
+			<div></div>
 		</h2>
 		<br/>
 		<table class="table table-bordered">
@@ -155,3 +155,10 @@
 
 	</div>
 </div>
+<div id="addPBtop">
+			<i type="button" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()"
+				data-toggle="modal" data-target="#example" class="fas fa-plus"></i>
+			<div [ngStyle]="{'opacity':opacit,'width':widt}">
+				<label>Add New Product</label>
+			</div>
+		</div>

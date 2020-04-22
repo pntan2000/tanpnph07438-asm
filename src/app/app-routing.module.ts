@@ -63,7 +63,7 @@ const routes: Routes = [
     children: [
       { path: '', component: NotFoundComponent}
     ]},
-  { path: '**', redirectTo:'/404', pathMatch:'full'},
+  { path: '**', redirectTo:'/404', pathMatch:'full'}
 ];
 
 @NgModule({

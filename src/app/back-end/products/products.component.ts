@@ -90,4 +90,17 @@ export class ProductsComponent implements OnInit {
       this.productService.getProducts().subscribe(response => this.items = response, error => console.log(error));
     }
   }
+
+  
+  opacit:string = '0';
+  widt:string = "0px";
+  mouseenter(){
+    this.opacit = '1';
+    this.widt = '240px';
+  }
+  
+  mouseleave(){
+    this.opacit = '0';
+    this.widt = '0px';
+  }
 }
