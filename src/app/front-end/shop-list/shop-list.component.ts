@@ -3,6 +3,8 @@ import {Product} from "../../Product";
 import { ProductService } from "../../product.service";
 import { ActivatedRoute } from "@angular/router";
 import { User } from '../../User';
+import { Cart } from '../../Cart';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-shop-list',
@@ -13,10 +15,12 @@ export class ShopListComponent implements OnInit {
 
   items:Product[];
   user: User[];
+  cart = new Cart();
 
   constructor(
     private productService:ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private home: HomeComponent
   ) { }
 
   ngOnInit():void {
@@ -31,6 +35,17 @@ export class ShopListComponent implements OnInit {
         this.productService.getProducts().subscribe(response => this.items = response, error => console.log(error));
       };
     });
+}
+addtoCart(product){
+    this.cart.user = "Tan";
+    this.cart.img = product.img;
+    this.cart.name = product.name;
+    this.cart.amount = 1;
+    this.cart.idsp = product.id;
+    this.cart.price = product.price;
+    if(this.cart.user != null && this.cart.user != "null"){
+      this.productService.addCart(this.cart).subscribe(response => this.home.items.push(response), error => console.log(error));
+    }
 }
 
 }

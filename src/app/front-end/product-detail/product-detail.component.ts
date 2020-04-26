@@ -3,6 +3,7 @@ import { Product } from "../../Product";
 import { ProductService } from "../../product.service";
 import { ActivatedRoute } from "@angular/router";
 import { Cart } from "../../Cart";
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,7 +17,8 @@ export class ProductDetailComponent implements OnInit {
   amount:number = 1;
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private home: HomeComponent
   ) { }
 
   ngOnInit() {
@@ -36,9 +38,8 @@ export class ProductDetailComponent implements OnInit {
     this.cart.idsp = this.product.id;
     this.cart.price = this.product.price;
     if(this.cart.user != null && this.cart.user != "null"){
-      this.productService.addCart(this.cart).subscribe(response => console.log(response), error => console.log(error));
+      this.productService.addCart(this.cart).subscribe(response => this.home.items.push(response), error => console.log(error));
     }
-    
   }
 
 }
