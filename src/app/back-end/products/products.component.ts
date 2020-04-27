@@ -23,6 +23,7 @@ export class ProductsComponent implements OnInit {
   validateForm: FormGroup;
     submitted = false;
     message: string;
+    loading = false;
 
   constructor(
     private productService:ProductService,
@@ -48,6 +49,7 @@ export class ProductsComponent implements OnInit {
         if (this.validateForm.invalid) {
             return;
         }
+        this.loading = true;
         this.addItem();
         this.message = "Add Success";
     }
@@ -75,6 +77,7 @@ export class ProductsComponent implements OnInit {
   }
   addItem(){
     this.productService.addProduct(this.product).subscribe(response => this.items.push(response), error => console.log(error));
+    this.loading = false;
   }
   updateItem(){
     this.products.id = this.selected.id;
