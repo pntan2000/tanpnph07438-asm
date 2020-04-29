@@ -65,6 +65,7 @@ export class HomeComponent implements OnInit {
     }
 
     BuyAll(){
+      if(this.items.length > 0){
       for(let i = 0; i < this.items.length; i++){
         this.order.name = this.items[i].name;
         this.order.img = this.items[i].img;
@@ -79,7 +80,7 @@ export class HomeComponent implements OnInit {
         this.productService.deleteCart(id).subscribe(response => this.items = this.items.filter(item => item.id != response.id), error => console.log(error));
         this.productService.getProductDetail(idsp).subscribe(response => (response.amount = response.amount-am, this.productService.updateProduct(response).subscribe()), error => console.log(error));
 
-      }
+      }}
     }
 
 }
