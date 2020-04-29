@@ -24,8 +24,8 @@
                   <div class="search-hotel">
                      <h3 class="agileits-sear-head">Search Here..</h3>
                      <form action="#" method="post">
-                        <input type="search" placeholder="Product name..." name="search" required="">
-                        <input type="submit" value=" ">
+                        <input type="search" placeholder="Product name..." name="search" [(ngModel)]="search" required="">
+                        <input type="submit" value="">
                      </form>
                   </div>
 							<!-- price range -->
@@ -208,7 +208,7 @@
                   <!-- //deals -->
                </div>
                <div class="left-ads-display col-lg-9">
-                  <app-shop-list></app-shop-list>
+                  <app-shop-list [search]="search"></app-shop-list>
                </div>
             </div>
          </div>

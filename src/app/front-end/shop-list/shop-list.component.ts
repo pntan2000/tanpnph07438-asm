@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Product} from "../../Product";
 import { ProductService } from "../../product.service";
 import { ActivatedRoute } from "@angular/router";
@@ -16,6 +16,7 @@ export class ShopListComponent implements OnInit {
   items:Product[];
   user: User[];
   cart = new Cart();
+  @Input('search') search:string;
 
   constructor(
     private productService:ProductService,
@@ -25,7 +26,16 @@ export class ShopListComponent implements OnInit {
 
   ngOnInit():void {
     this.getProducts();
+    this.getSearch();
   }
+  getSearch(){
+    if(this.search != null && this.search != ""){
+    this.items = this.items.filter(product => product.name == this.search);
+    } else if(this.search == null || this.search == "") {
+      this.productService.getProducts().subscribe(response => this.items = response, error => console.log(error));
+    }
+  }
+  
 
   getProducts(){
     this.route.params.subscribe(param => {

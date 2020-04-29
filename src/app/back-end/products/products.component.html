@@ -65,7 +65,7 @@
                       </div>
 										<div class="form-group">
 											<label for="exampleInputEmail1">Category</label>
-                      <select name="category" [(ngModel)]="products.category" value="{{selected.category}}" class="form-control" >
+											<select name="category" [(ngModel)]="products.category" value="{{selected.category}}" class="form-control" >
                         <option value="">-----</option>
                         <option value="kid">Kids Toys</option>
                         <option value="doll">Dolls</option>
@@ -73,17 +73,17 @@
                         <option value="boy">Boys Toys</option>
                       </select>
 										</div>
-											<div class="form-group" id="inp">
-												<label for="exampleInputEmail1">Amount</label>
-												<input type="number" class="form-control" id="exampleInputEmail1" name="amount" [(ngModel)]="products.amount" value="{{selected.amount}}"  aria-describedby="emailHelp">
+										<div class="form-group" id="inp">
+											<label for="exampleInputEmail1">Amount</label>
+											<input type="number" class="form-control" id="exampleInputEmail1" name="amount" [(ngModel)]="products.amount" value="{{selected.amount}}"  aria-describedby="emailHelp">
 										</div>
-												<div class="form-group">
-													<label for="exampleInputEmail1">Image URL</label>
-													<input type="text" class="form-control" id="exampleInputEmail1" name="img" [(ngModel)]="products.img" value="{{selected.img}}"  aria-describedby="emailHelp">
-													<br>
-													<img class="card-img-top" src="{{selected.img}}" alt="">
+											<div class="form-group">
+												<label for="exampleInputEmail1">Image URL</label>
+												<input type="text" class="form-control" id="exampleInputEmail1" name="img" [(ngModel)]="products.img" value="{{selected.img}}"  aria-describedby="emailHelp">
+												<br>
+												<img class="card-img-top" src="{{selected.img}}" alt="">
 										</div>
-													<button type="submit" data-dismiss="modal" (click)="updateItem()" class="btn btn-primary">Update</button>
+												<button type="submit" data-dismiss="modal" (click)="updateItem()" class="btn btn-primary">Update</button>
 							</form>
 						</div>
 						<div class="modal-footer">
@@ -125,7 +125,7 @@
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Category</label>
-                <select name="category" [(ngModel)]="product.category" formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+								<select name="category" [(ngModel)]="product.category" formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
                   <option value="">-----</option>
                   <option value="kid">Kids Toys</option>
                   <option value="doll">Dolls</option>
@@ -152,9 +152,9 @@
 								<br>
 								<img class="card-img-top" src="{{product.img}}" alt="">
 										</div>
-                <div class="justify-content-between">
-                  
-								<button type="submit" class="btn btn-primary"> 
+								<div class="justify-content-between">
+
+									<button type="submit" class="btn btn-primary">
                   <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Create
                 </button>
@@ -172,9 +172,9 @@
 	</div>
 </div>
 <div id="addPBtop">
-			<i type="button" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()"
+	<i type="button" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()"
 				data-toggle="modal" data-target="#example" class="fas fa-plus"></i>
-			<div [ngStyle]="{'opacity':opacit,'width':widt}">
-				<label>Add New Product</label>
-			</div>
-		</div>
+	<div [ngStyle]="{'opacity':opacit,'width':widt}">
+		<label>Add New Product</label>
+	</div>
+</div>

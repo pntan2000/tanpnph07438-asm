@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
 
     getCart(){
       this.productService.getCart().subscribe(response => this.items = response.filter(product => product.user == "Tan"), error => console.log(error));
-      console.log(this.items);
     }
     removeCart(id){
       this.productService.deleteCart(id).subscribe(response => this.items = this.items.filter(item => item.id != response.id), error => console.log(error));
