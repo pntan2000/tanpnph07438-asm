@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit {
           break;
         }
       }
+      this.updateCarts();
     }
 
     updateCarts(){

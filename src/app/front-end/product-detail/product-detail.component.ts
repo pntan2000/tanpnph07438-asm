@@ -39,6 +39,7 @@ export class ProductDetailComponent implements OnInit {
           console.log(this.home.items[i]);
         }
       }
+      this.home.updateCarts();
     if(this.check == true){
       this.cart.user = "Tan";
       this.cart.img = this.product.img;
