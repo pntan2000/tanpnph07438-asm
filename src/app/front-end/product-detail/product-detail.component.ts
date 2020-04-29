@@ -34,9 +34,8 @@ export class ProductDetailComponent implements OnInit {
   addCart(){
     for(let i = 0; i < this.home.items.length; i++){
         if(this.product.id == this.home.items[i].idsp){
-          this.home.items[i].amount+=this.amount;
+          this.home.items[i].amount = this.home.items[i].amount + this.amount;
           this.check = false;
-          console.log(this.home.items[i]);
         }
       }
       this.home.updateCarts();

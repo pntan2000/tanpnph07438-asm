@@ -46,7 +46,16 @@ export class ShopListComponent implements OnInit {
       };
     });
 }
-addtoCart(product){
+    check:boolean = true;
+  addtoCart(product){
+    for(let i = 0; i < this.home.items.length; i++){
+        if(product.id == this.home.items[i].idsp){
+          this.home.items[i].amount++;
+          this.check = false;
+        }
+      }
+      this.home.updateCarts();
+    if(this.check == true){
     this.cart.user = "Tan";
     this.cart.img = product.img;
     this.cart.name = product.name;
@@ -55,6 +64,7 @@ addtoCart(product){
     this.cart.price = product.price;
     if(this.cart.user != null && this.cart.user != "null"){
       this.productService.addCart(this.cart).subscribe(response => this.home.items.push(response), error => console.log(error));
+    }
     }
 }
 
