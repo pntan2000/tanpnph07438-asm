@@ -65,7 +65,13 @@
                       </div>
 										<div class="form-group">
 											<label for="exampleInputEmail1">Category</label>
-											<input type="text" class="form-control" id="exampleInputEmail1" name="category" [(ngModel)]="products.category" value="{{selected.category}}"  aria-describedby="emailHelp">
+                      <select name="category" [(ngModel)]="products.category" value="{{selected.category}}" class="form-control" >
+                        <option value="">-----</option>
+                        <option value="kid">Kids Toys</option>
+                        <option value="doll">Dolls</option>
+                        <option value="key">Key Toys</option>
+                        <option value="boy">Boys Toys</option>
+                      </select>
 										</div>
 											<div class="form-group" id="inp">
 												<label for="exampleInputEmail1">Amount</label>
@@ -119,7 +125,13 @@
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Category</label>
-								<input type="text" name="category" [(ngModel)]="product.category" formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }" />
+                <select name="category" [(ngModel)]="product.category" formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+                  <option value="">-----</option>
+                  <option value="kid">Kids Toys</option>
+                  <option value="doll">Dolls</option>
+                  <option value="key">Key Toys</option>
+                  <option value="boy">Boys Toys</option>
+                </select>
 								<div *ngIf="submitted && f.category.errors" class="invalid-feedback">
 									<div *ngIf="f.category.errors.required">Category is required</div>
 								</div>
