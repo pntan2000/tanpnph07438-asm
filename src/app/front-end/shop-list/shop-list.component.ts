@@ -16,7 +16,7 @@ export class ShopListComponent implements OnInit {
   items:Product[];
   user: User[];
   cart = new Cart();
-  @Input('search') search:string;
+  search:string;
 
   constructor(
     private productService:ProductService,

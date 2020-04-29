@@ -15,7 +15,6 @@ export class ProductDetailComponent implements OnInit {
   product: Product;
   cart = new Cart();
   amount: number = 1;
-  item: Cart[];
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
@@ -24,7 +23,6 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getProduct();
-    this.productService.getCart().subscribe(response => this.item = response.filter(product => product.user == "Tan"), error => console.log(error));
   }
   getProduct(){
     this.route.params.subscribe(param => {
@@ -34,13 +32,11 @@ export class ProductDetailComponent implements OnInit {
 
     check:boolean = true;
   addCart(){
-    for(let i = 0; i < this.item.length; i++){
-      let amou = this.item[i].amount;
-        if(this.product.id == this.item[i].idsp){
-          console.log(this.item[i]);
-          this.item[i].amount = amou + this.amount;
+    for(let i = 0; i < this.home.items.length; i++){
+        if(this.product.id == this.home.items[i].idsp){
+          this.home.items[i].amount+=this.amount;
           this.check = false;
-          this.productService.updateCart(this.item[i]).subscribe();
+          console.log(this.home.items[i]);
         }
       }
     if(this.check == true){

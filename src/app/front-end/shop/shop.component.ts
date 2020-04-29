@@ -8,7 +8,6 @@ import { ShopListComponent } from '../shop-list/shop-list.component';
 })
 export class ShopComponent implements OnInit {
   constructor() { }
-  search: string;
 
   ngOnInit() {
   }
