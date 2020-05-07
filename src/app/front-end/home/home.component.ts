@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
     submitted = false;
     items:Cart[];
     order = new Order;
+    total:number = 0;
 
     constructor(
       private formBuilder: FormBuilder,
@@ -43,10 +44,12 @@ export class HomeComponent implements OnInit {
     }
 
     getCart(){
-      this.productService.getCart().subscribe(response => this.items = response.filter(product => product.user == "Tan"), error => console.log(error));
+      this.productService.getCart().subscribe(response => (this.items = response.filter(product => product.user == "Tan"), this.getTotal()), error => console.log(error));
+      
     }
     removeCart(id){
-      this.productService.deleteCart(id).subscribe(response => this.items = this.items.filter(item => item.id != response.id), error => console.log(error));
+      this.productService.deleteCart(id).subscribe(response => (this.items = this.items.filter(item => item.id != response.id),this.getTotal()), error => console.log(error));
+      
     }
     changeCart(product, amo){
       for(let i = 0; i < this.items.length; i++){
@@ -61,6 +64,13 @@ export class HomeComponent implements OnInit {
     updateCarts(){
       for(let i = 0; i < this.items.length; i++){
         this.productService.updateCart(this.items[i]).subscribe();
+      }
+      this.getTotal();
+    }
+    getTotal(){
+      this.total = 0;
+      for(let i = 0; i < this.items.length; i++){
+        this.total = this.total + this.items[i].amount * this.items[i].price;
       }
     }
 
@@ -79,8 +89,11 @@ export class HomeComponent implements OnInit {
         this.productService.addOrder(this.order).subscribe();
         this.productService.deleteCart(id).subscribe(response => this.items = this.items.filter(item => item.id != response.id), error => console.log(error));
         this.productService.getProductDetail(idsp).subscribe(response => (response.amount = response.amount-am, this.productService.updateProduct(response).subscribe()), error => console.log(error));
-
-      }}
+        
+      }
+        this.getTotal();
+      }
+      
     }
 
 }

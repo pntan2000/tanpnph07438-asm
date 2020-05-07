@@ -226,6 +226,13 @@
                       <button class="btn btn-primary" (click)="removeCart(item.id)"><i class="far fa-trash-alt"></i></button>
                     </td>
                 </tr>
+                <tr *ngIf="total">
+                  <th></th>
+                  <th></th>
+                  <th>Total:</th>
+                  <th>${{total}}</th>
+                  <th></th>
+                </tr>
               </thead>
             </table>
 					</div>

@@ -55,6 +55,7 @@ export class ShopListComponent implements OnInit {
         }
       }
       this.home.updateCarts();
+      this.home.getTotal();
     if(this.check == true){
     this.cart.user = "Tan";
     this.cart.img = product.img;
@@ -63,7 +64,7 @@ export class ShopListComponent implements OnInit {
     this.cart.idsp = product.id;
     this.cart.price = product.price;
     if(this.cart.user != null && this.cart.user != "null"){
-      this.productService.addCart(this.cart).subscribe(response => this.home.items.push(response), error => console.log(error));
+      this.productService.addCart(this.cart).subscribe(response => (this.home.items.push(response), this.home.getTotal()), error => console.log(error));
     }
     }
 }
